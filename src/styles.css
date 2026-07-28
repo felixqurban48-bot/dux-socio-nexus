@@ -186,6 +186,64 @@
   }
 }
 
+@keyframes lux-hover {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes lux-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+
+@keyframes lux-dash {
+  from {
+    stroke-dashoffset: 60;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @utility animate-drift {
   animation: lux-drift 18s var(--ease-lux) infinite;
 }
+
+@utility animate-nudge {
+  animation: lux-nudge 3.6s var(--ease-lux) infinite;
+}
+
+@utility hero-grid {
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 3.5%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 3.5%) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(75% 60% at 50% 35%, black, transparent 75%);
+}
+
+@utility hero-spotlight {
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 30%),
+    oklch(0.84 0.055 85 / 7%),
+    transparent 70%
+  );
+  transition: background 400ms var(--ease-lux);
+}
+
+.lux-line {
+  stroke-dasharray: 6 8;
+  animation: lux-dash 9s linear infinite;
+}
+
