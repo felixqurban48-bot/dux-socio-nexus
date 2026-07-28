@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 
 export function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden px-6 pb-16 pt-24">
+    <footer className="relative overflow-hidden bg-canvas-alt px-6 pb-16 pt-28">
       <div className="hairline mx-auto max-w-6xl" />
       <div className="mx-auto mt-20 max-w-6xl">
         <Reveal>
