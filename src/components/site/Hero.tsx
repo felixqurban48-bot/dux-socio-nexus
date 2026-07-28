@@ -1,5 +1,7 @@
+import { useEffect, useRef } from "react";
 import { Reveal } from "./Reveal";
 import mark from "@/assets/duxsocio-mark.png";
+import { CalendarCheck, FileSearch, UserRound } from "lucide-react";
 
 const particles = [
   { left: "12%", delay: "0s", dur: "14s" },
@@ -10,14 +12,72 @@ const particles = [
   { left: "88%", delay: "4.5s", dur: "19s" },
 ];
 
+const cards = [
+  {
+    icon: UserRound,
+    label: "Qualified Lead",
+    lines: ["CEO", "Houston, TX"],
+    pos: "left-[2%] top-[18%] lg:left-[4%]",
+    dur: "11s",
+    delay: "0s",
+  },
+  {
+    icon: CalendarCheck,
+    label: "Meeting Booked",
+    lines: ["Wednesday", "10:30 AM"],
+    pos: "right-[2%] top-[30%] lg:right-[5%]",
+    dur: "13s",
+    delay: "1.6s",
+  },
+  {
+    icon: FileSearch,
+    label: "Research Complete",
+    lines: ["Industrial HVAC"],
+    pos: "left-[6%] bottom-[10%] lg:left-[12%]",
+    dur: "15s",
+    delay: "3.2s",
+  },
+];
+
 export function Hero() {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      el.style.setProperty("--my", `${e.clientY - r.top}px`);
+    };
+    el.addEventListener("mousemove", onMove);
+    return () => el.removeEventListener("mousemove", onMove);
+  }, []);
+
   return (
-    <section className="relative isolate overflow-hidden px-6 pb-28 pt-40 sm:pt-48 lg:pb-40 lg:pt-56">
+    <section
+      ref={ref}
+      className="relative isolate overflow-hidden px-6 pb-28 pt-40 sm:pt-48 lg:pb-40 lg:pt-56"
+    >
+      {/* Grid texture */}
+      <div aria-hidden className="hero-grid pointer-events-none absolute inset-0" />
       {/* Ambient gradient */}
       <div
         aria-hidden
         className="animate-drift pointer-events-none absolute inset-x-0 -top-40 h-[70vh] [background:var(--gradient-halo)]"
       />
+      {/* Blurred light orbs */}
+      <div
+        aria-hidden
+        className="animate-drift pointer-events-none absolute -left-24 top-24 size-[26rem] rounded-full bg-gold/[0.07] blur-[110px]"
+      />
+      <div
+        aria-hidden
+        className="animate-drift pointer-events-none absolute -right-20 bottom-0 size-[22rem] rounded-full bg-silver/[0.05] blur-[120px]"
+        style={{ animationDelay: "6s" }}
+      />
+      {/* Mouse spotlight */}
+      <div aria-hidden className="hero-spotlight pointer-events-none absolute inset-0" />
       {/* Huge blurred logo */}
       <img
         src={mark}
@@ -25,8 +85,33 @@ export function Hero() {
         aria-hidden
         width={1024}
         height={1024}
-        className="pointer-events-none absolute left-1/2 top-1/2 w-[min(120vw,1100px)] -translate-x-1/2 -translate-y-1/2 opacity-[0.055] blur-[6px] select-none"
+        className="pointer-events-none absolute left-1/2 top-1/2 w-[min(120vw,1100px)] -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.055] blur-[6px]"
       />
+      {/* Connection lines */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute inset-0 size-full opacity-40"
+        preserveAspectRatio="none"
+        viewBox="0 0 100 100"
+      >
+        <path
+          d="M6 26 C 30 40, 62 12, 96 34"
+          className="lux-line"
+          fill="none"
+          stroke="var(--gold)"
+          strokeOpacity="0.28"
+          strokeWidth="0.15"
+        />
+        <path
+          d="M10 84 C 38 66, 66 92, 94 62"
+          className="lux-line"
+          fill="none"
+          stroke="var(--gold)"
+          strokeOpacity="0.2"
+          strokeWidth="0.15"
+          style={{ animationDelay: "3s" }}
+        />
+      </svg>
       {/* Particles */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         {particles.map((p, i) => (
@@ -41,26 +126,51 @@ export function Hero() {
         ))}
       </div>
 
+      {/* Floating glass cards */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
+        {cards.map((c) => (
+          <div
+            key={c.label}
+            className={`glass-panel absolute w-52 rounded-2xl px-5 py-4 ${c.pos}`}
+            style={{ animation: `lux-hover ${c.dur} var(--ease-lux) ${c.delay} infinite` }}
+          >
+            <div className="flex items-center gap-2.5">
+              <c.icon className="size-4 text-gold/85" strokeWidth={1.25} />
+              <span className="eyebrow !text-foreground/70">{c.label}</span>
+            </div>
+            <div className="mt-3 space-y-0.5">
+              {c.lines.map((l) => (
+                <p key={l} className="text-sm text-muted-foreground">
+                  {l}
+                </p>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
       <div className="relative mx-auto max-w-5xl text-center">
         <Reveal>
           <span className="inline-flex items-center gap-3 rounded-full border border-border bg-surface px-4 py-2 backdrop-blur-md">
             <span className="size-1.5 rounded-full bg-gold" />
             <span className="eyebrow !text-foreground/70">
-              Outbound Lead Generation
+              Research. Relationships. Results.
             </span>
           </span>
         </Reveal>
 
-        <Reveal delay={120}>
-          <h1 className="font-display mt-10 text-balance text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.5rem]">
-            Business Doesn&rsquo;t Start With A Sale.
+        <h1 className="font-display mt-10 text-balance text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.5rem]">
+          <Reveal delay={140}>
+            <span className="block">Business Doesn&rsquo;t Start With A Sale.</span>
+          </Reveal>
+          <Reveal delay={620}>
             <span className="mt-2 block text-gradient-gold italic">
               It Starts With A Conversation.
             </span>
-          </h1>
-        </Reveal>
+          </Reveal>
+        </h1>
 
-        <Reveal delay={240}>
+        <Reveal delay={980}>
           <p className="mx-auto mt-8 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
             DuxSocio helps commercial service companies connect with qualified
             decision-makers through research-driven outbound prospecting, personalized
@@ -68,7 +178,7 @@ export function Hero() {
           </p>
         </Reveal>
 
-        <Reveal delay={360}>
+        <Reveal delay={1160}>
           <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#contact"
@@ -87,9 +197,21 @@ export function Hero() {
             </a>
           </div>
         </Reveal>
+
+        <Reveal delay={1400}>
+          <a
+            href="#philosophy"
+            className="animate-nudge mt-24 inline-flex flex-col items-center gap-2 text-muted-foreground transition-colors duration-500 hover:text-foreground"
+          >
+            <span aria-hidden className="text-base">
+              &darr;
+            </span>
+            <span className="eyebrow">Scroll to Explore</span>
+          </a>
+        </Reveal>
       </div>
 
-      <div className="hairline mx-auto mt-28 max-w-6xl" />
+      <div className="hairline mx-auto mt-24 max-w-6xl" />
     </section>
   );
 }
