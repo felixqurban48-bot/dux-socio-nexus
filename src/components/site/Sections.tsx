@@ -211,7 +211,7 @@ export function Industries() {
 
 export function Relationships() {
   return (
-    <Section>
+    <Section id="philosophy">
       <SectionHeading
         eyebrow="Philosophy"
         title={
@@ -249,7 +249,7 @@ export function Relationships() {
 
 export function Difference() {
   return (
-    <Section>
+    <Section id="difference">
       <SectionHeading
         eyebrow="Comparison"
         title="The DuxSocio Difference"
@@ -335,7 +335,7 @@ export function Framework() {
 
 export function Services() {
   return (
-    <Section>
+    <Section id="services">
       <SectionHeading
         eyebrow="Services"
         title="Services Built for Sustainable Growth"
@@ -360,7 +360,7 @@ export function Services() {
 
 export function Pillars() {
   return (
-    <Section>
+    <Section id="why">
       <SectionHeading
         eyebrow="Principles"
         title="The Four Pillars of DuxSocio"
@@ -389,7 +389,7 @@ export function Pillars() {
 
 export function Deliverables() {
   return (
-    <Section>
+    <Section id="deliverables">
       <SectionHeading eyebrow="Deliverables" title="What You'll Receive" />
       <div className="mt-20 grid gap-4 sm:grid-cols-2">
         {deliverables.map((d, i) => (
@@ -409,7 +409,7 @@ export function Deliverables() {
 
 export function Faq() {
   return (
-    <Section>
+    <Section id="faq">
       <SectionHeading eyebrow="Questions" title="Frequently Asked Questions" />
       <Reveal className="mx-auto mt-16 max-w-3xl">
         <Accordion type="single" collapsible className="w-full">
