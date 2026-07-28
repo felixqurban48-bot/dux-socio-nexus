@@ -14,6 +14,7 @@ import {
   Check,
   X,
 } from "lucide-react";
+import mark from "@/assets/duxsocio-mark.png";
 import { Reveal, SectionHeading } from "./Reveal";
 import {
   Accordion,
