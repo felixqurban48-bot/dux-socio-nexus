@@ -53,8 +53,8 @@ export function SiteNav() {
         className={cn(
           "mx-auto flex max-w-6xl items-center justify-between gap-6 rounded-full border border-border px-3 py-2.5 pl-5 backdrop-blur-2xl transition-all duration-700 [transition-timing-function:var(--ease-lux)] sm:px-4 sm:pl-6",
           scrolled
-            ? "bg-background/80 shadow-[var(--shadow-card-hover)]"
-            : "bg-background/60 shadow-[var(--shadow-card)]",
+            ? "bg-background/90 shadow-[var(--shadow-card-hover)]"
+            : "bg-background/85 shadow-[var(--shadow-card)]",
         )}
       >
         <button
