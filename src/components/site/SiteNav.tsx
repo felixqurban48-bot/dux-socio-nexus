@@ -48,40 +48,46 @@ export function SiteNav() {
   };
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-700 [transition-timing-function:var(--ease-lux)]",
-        scrolled
-          ? "border-b border-border bg-background/60 shadow-[var(--shadow-elegant)] backdrop-blur-xl"
-          : "border-b border-transparent",
-      )}
-    >
-      <nav className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-6 px-6">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-5">
+      <nav
+        className={cn(
+          "mx-auto flex max-w-6xl items-center justify-between gap-6 rounded-full border border-border px-3 py-2.5 pl-5 backdrop-blur-2xl transition-all duration-700 [transition-timing-function:var(--ease-lux)] sm:px-4 sm:pl-6",
+          scrolled
+            ? "bg-background/80 shadow-[var(--shadow-card-hover)]"
+            : "bg-background/60 shadow-[var(--shadow-card)]",
+        )}
+      >
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2.5"
+          className="group flex items-center gap-2.5"
           aria-label="DuxSocio home"
         >
-          <img src={mark} alt="" width={1024} height={1024} className="size-7 object-contain" />
-          <span className="font-display text-xl tracking-tight">DuxSocio</span>
+          <img
+            src={mark}
+            alt=""
+            width={1024}
+            height={1024}
+            className="size-7 object-contain transition-transform duration-700 [transition-timing-function:var(--ease-lux)] group-hover:scale-105"
+          />
+          <span className="font-display text-xl tracking-tight text-foreground">DuxSocio</span>
         </button>
 
-        <ul className="hidden items-center gap-1 xl:flex">
+        <ul className="hidden items-center gap-0.5 xl:flex">
           {links.map((l) => (
             <li key={l.id}>
               <button
                 onClick={() => go(l.id)}
                 className={cn(
-                  "rounded-full px-3.5 py-2 text-[0.8rem] transition-colors duration-500",
+                  "relative rounded-full px-3.5 py-2 text-[0.8rem] transition-all duration-500 [transition-timing-function:var(--ease-lux)] hover:bg-accent",
                   active === l.id
-                    ? "text-foreground"
+                    ? "bg-accent text-foreground"
                     : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {l.label}
                 <span
                   className={cn(
-                    "mx-auto mt-1 block h-px w-4 origin-center bg-gold transition-transform duration-500 [transition-timing-function:var(--ease-lux)]",
+                    "absolute inset-x-4 bottom-1 block h-px origin-center bg-gold transition-transform duration-700 [transition-timing-function:var(--ease-lux)]",
                     active === l.id ? "scale-x-100" : "scale-x-0",
                   )}
                 />
@@ -95,13 +101,13 @@ export function SiteNav() {
             href="https://www.linkedin.com"
             target="_blank"
             rel="noreferrer"
-            className="hidden h-10 items-center rounded-full border border-border px-5 text-[0.8rem] text-foreground/85 transition-all duration-500 [transition-timing-function:var(--ease-lux)] hover:-translate-y-0.5 hover:border-gold/40 sm:inline-flex"
+            className="hidden h-10 items-center rounded-full px-4 text-[0.8rem] text-muted-foreground transition-colors duration-500 hover:text-foreground sm:inline-flex"
           >
             LinkedIn
           </a>
           <button
             onClick={() => go("contact")}
-            className="inline-flex h-10 items-center rounded-full bg-primary px-5 text-[0.8rem] font-medium text-primary-foreground transition-all duration-500 [transition-timing-function:var(--ease-lux)] hover:-translate-y-0.5 hover:opacity-90"
+            className="inline-flex h-10 items-center rounded-full bg-primary px-5 text-[0.8rem] font-medium text-primary-foreground shadow-[var(--shadow-card)] transition-all duration-500 [transition-timing-function:var(--ease-lux)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)]"
           >
             Book a Discovery Call
           </button>
@@ -111,20 +117,20 @@ export function SiteNav() {
             aria-expanded={open}
             className="inline-flex size-10 flex-col items-center justify-center gap-1.5 rounded-full border border-border xl:hidden"
           >
-            <span className="h-px w-4 bg-foreground/80" />
-            <span className="h-px w-4 bg-foreground/80" />
+            <span className="h-px w-4 bg-foreground/70" />
+            <span className="h-px w-4 bg-foreground/70" />
           </button>
         </div>
       </nav>
 
       {open ? (
-        <div className="border-t border-border bg-background/85 backdrop-blur-xl xl:hidden">
-          <ul className="mx-auto max-w-6xl px-6 py-4">
+        <div className="mx-auto mt-2 max-w-6xl rounded-3xl border border-border bg-background/90 shadow-[var(--shadow-card)] backdrop-blur-2xl xl:hidden">
+          <ul className="px-5 py-3">
             {links.map((l) => (
               <li key={l.id}>
                 <button
                   onClick={() => go(l.id)}
-                  className="w-full py-3 text-left text-sm text-muted-foreground transition-colors duration-500 hover:text-foreground"
+                  className="w-full rounded-xl px-2 py-3 text-left text-sm text-muted-foreground transition-colors duration-500 hover:bg-accent hover:text-foreground"
                 >
                   {l.label}
                 </button>
