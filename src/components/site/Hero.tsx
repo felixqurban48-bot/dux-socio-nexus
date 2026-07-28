@@ -57,7 +57,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative isolate overflow-hidden px-6 pb-28 pt-40 sm:pt-48 lg:pb-40 lg:pt-56"
+      className="lux-dark relative isolate overflow-hidden bg-background px-6 pb-40 pt-40 text-foreground sm:pt-48 lg:pb-56 lg:pt-56"
     >
       {/* Grid texture */}
       <div aria-hidden className="hero-grid pointer-events-none absolute inset-0" />
