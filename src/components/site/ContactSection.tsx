@@ -13,7 +13,10 @@ export function ContactSection() {
   const [submitting, setSubmitting] = useState(false);
 
   return (
-    <section id="contact" className="relative isolate overflow-hidden px-6 py-32 lg:py-44">
+    <section
+      id="contact"
+      className="relative isolate overflow-hidden bg-canvas px-6 py-36 lg:py-52"
+    >
       <div
         aria-hidden
         className="animate-drift pointer-events-none absolute inset-x-0 top-0 h-[60vh] [background:var(--gradient-halo)]"
@@ -27,7 +30,7 @@ export function ContactSection() {
 
         <Reveal delay={140}>
           <form
-            className="glass-panel mt-16 rounded-[1.75rem] p-8 sm:p-11"
+            className="lux-card mt-20 rounded-[1.75rem] p-8 sm:p-12"
             onSubmit={(e) => {
               e.preventDefault();
               setSubmitting(true);
@@ -70,7 +73,7 @@ export function ContactSection() {
             <button
               type="submit"
               disabled={submitting}
-              className="mt-11 inline-flex h-12 w-full items-center justify-center rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground transition-all duration-500 [transition-timing-function:var(--ease-lux)] hover:-translate-y-0.5 hover:opacity-90 disabled:opacity-60 sm:w-auto"
+              className="mt-12 inline-flex h-12 w-full items-center justify-center rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground shadow-[var(--shadow-card)] transition-all duration-500 [transition-timing-function:var(--ease-lux)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)] disabled:opacity-60 sm:w-auto"
             >
               {submitting ? "Sending…" : "Request a Discovery Call"}
             </button>

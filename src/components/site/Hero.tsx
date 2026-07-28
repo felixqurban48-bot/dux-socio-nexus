@@ -57,7 +57,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative isolate overflow-hidden px-6 pb-28 pt-40 sm:pt-48 lg:pb-40 lg:pt-56"
+      className="lux-dark relative isolate overflow-hidden bg-background px-6 pb-40 pt-40 text-foreground sm:pt-48 lg:pb-56 lg:pt-56"
     >
       {/* Grid texture */}
       <div aria-hidden className="hero-grid pointer-events-none absolute inset-0" />
@@ -211,7 +211,23 @@ export function Hero() {
         </Reveal>
       </div>
 
-      <div className="hairline mx-auto mt-24 max-w-6xl" />
+      {/* Cinematic fade into the light canvas */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-[oklch(0.155_0_0/0.6)] to-[oklch(1_0_0)]"
+      />
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-[-1px] h-28 w-full"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+      >
+        <path d="M0 120 C 420 22, 1020 22, 1440 120 Z" fill="oklch(1 0 0)" />
+      </svg>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-16 h-24 blur-2xl [background:radial-gradient(50%_100%_at_50%_100%,oklch(0.84_0.055_85/0.12),transparent_70%)]"
+      />
     </section>
   );
 }
