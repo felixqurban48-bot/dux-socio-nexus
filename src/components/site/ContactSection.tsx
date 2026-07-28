@@ -13,7 +13,10 @@ export function ContactSection() {
   const [submitting, setSubmitting] = useState(false);
 
   return (
-    <section id="contact" className="relative isolate overflow-hidden px-6 py-32 lg:py-44">
+    <section
+      id="contact"
+      className="relative isolate overflow-hidden bg-canvas px-6 py-36 lg:py-52"
+    >
       <div
         aria-hidden
         className="animate-drift pointer-events-none absolute inset-x-0 top-0 h-[60vh] [background:var(--gradient-halo)]"
@@ -27,7 +30,7 @@ export function ContactSection() {
 
         <Reveal delay={140}>
           <form
-            className="glass-panel mt-16 rounded-[1.75rem] p-8 sm:p-11"
+            className="lux-card mt-20 rounded-[1.75rem] p-8 sm:p-12"
             onSubmit={(e) => {
               e.preventDefault();
               setSubmitting(true);
