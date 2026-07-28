@@ -373,7 +373,6 @@ export function Pillars() {
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full opacity-0 blur-3xl transition-opacity duration-1000 group-hover:opacity-100 [background:var(--gradient-gold)]"
-                style={{ opacity: undefined }}
               />
               <Gem className="size-5 text-gold/70" strokeWidth={1.1} />
               <h3 className="font-display mt-10 text-3xl text-foreground">{p.title}</h3>
