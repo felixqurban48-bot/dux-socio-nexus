@@ -17,7 +17,7 @@ const cards = [
     icon: UserRound,
     label: "Qualified Lead",
     lines: ["CEO", "Houston, TX"],
-    pos: "left-[2%] top-[18%] lg:left-[4%]",
+    pos: "left-[1%] top-[16%]",
     dur: "11s",
     delay: "0s",
   },
@@ -25,7 +25,7 @@ const cards = [
     icon: CalendarCheck,
     label: "Meeting Booked",
     lines: ["Wednesday", "10:30 AM"],
-    pos: "right-[2%] top-[30%] lg:right-[5%]",
+    pos: "right-[1%] top-[22%]",
     dur: "13s",
     delay: "1.6s",
   },
@@ -33,7 +33,7 @@ const cards = [
     icon: FileSearch,
     label: "Research Complete",
     lines: ["Industrial HVAC"],
-    pos: "left-[6%] bottom-[10%] lg:left-[12%]",
+    pos: "right-[3%] bottom-[18%]",
     dur: "15s",
     delay: "3.2s",
   },
@@ -127,7 +127,7 @@ export function Hero() {
       </div>
 
       {/* Floating glass cards */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
+      <div aria-hidden className="pointer-events-none absolute inset-0 hidden 2xl:block">
         {cards.map((c) => (
           <div
             key={c.label}
