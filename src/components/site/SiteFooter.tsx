@@ -41,6 +41,12 @@ export function SiteFooter() {
               >
                 LinkedIn
               </a>
+              <a href="#" className="transition-colors duration-500 hover:text-foreground">
+                Privacy Policy
+              </a>
+              <a href="#" className="transition-colors duration-500 hover:text-foreground">
+                Terms
+              </a>
             </div>
           </div>
         </Reveal>
